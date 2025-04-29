@@ -3,6 +3,8 @@
 
 Cette application  R Shiny permet d'explorer les statuts de protection et les observations d'espèces en France métropolitaine. Elle s'appuie sur des données publiques et des API fournies par l'Inventaire National du Patrimoine Naturel (INPN)
 
+En ligne : https://isabel6198.shinyapps.io/especes-protegees/
+
 ### Sources de données utilisées
 
 * **Données taxonomiques (TAXREF) :** Les informations sur les noms d'espèces (communs et scientifiques), les rangs, la classification et les groupes proviennent du référentiel taxonomique national TAXREF (version 18.0). Les fichiers `TAXVERNv18.txt` (noms vernaculaires) et `TAXREFv18.txt` (référentiel principal) sont nécessaires
@@ -97,18 +99,18 @@ Cet onglet permet à l'utilisateur de sélectionner une espèce et de visualiser
 
 Lorsqu'une espèce est sélectionnée, cet `observeEvent` déclenche une série d'actions :
     
-        1.  Le code `cd_nom` de l'espèce est identifié
+*  Le code `cd_nom` de l'espèce est identifié
         
-        2.  L'API TAXREF (`get_infos_taxref`) est appelée pour récupérer le nom scientifique et le groupe taxonomique, qui sont affichés sous le sélecteur (`output$resultat_taxref`) avec un lien vers la fiche INPN de l'espèce
+*  L'API TAXREF (`get_infos_taxref`) est appelée pour récupérer le nom scientifique et le groupe taxonomique, qui sont affichés sous le sélecteur (`output$resultat_taxref`) avec un lien vers la fiche INPN de l'espèce
         
-        3.  L'API TAXREF (`get_statuts_par_espece`) est appelée pour obtenir la liste complète des statuts associés à cette espèce (type de statut, nom, localité...)
+*  L'API TAXREF (`get_statuts_par_espece`) est appelée pour obtenir la liste complète des statuts associés à cette espèce (type de statut, nom, localité...)
         
-        4.  Ces données de statuts sont traitées pour :
+*  Ces données de statuts sont traitées pour :
         
-            * Identifier les noms des régions administratives concernées. Cette liste est stockée dans une variable réactive (`noms_regions_statuts`)
-            * Générer des étiquettes textuelles formatées (en HTML) résumant les statuts pour chaque région concernée. Ces étiquettes sont stockées dans une autre variable réactive (`labels_regions_statuts`)
-            * Afficher la liste détaillée des statuts dans un tableau interactif (`output$tableau_statuts`) en utilisant le package `DT`
-            * Permettre le téléchargement de ce tableau au format CSV (`output$telecharger_statuts`)
+            - Identifier les noms des régions administratives concernées. Cette liste est stockée dans une variable réactive (`noms_regions_statuts`)
+            - Générer des étiquettes textuelles formatées (en HTML) résumant les statuts pour chaque région concernée. Ces étiquettes sont stockées dans une autre variable réactive (`labels_regions_statuts`)
+            - Afficher la liste détaillée des statuts dans un tableau interactif (`output$tableau_statuts`) en utilisant le package `DT`
+            - Permettre le téléchargement de ce tableau au format CSV (`output$telecharger_statuts`)
 * **Carte (`output$map_especes` - `renderLeaflet`) :**
 
      Cette fonction génère la carte de France (contours des régions)
