@@ -1,0 +1,37 @@
+# Fichiers liés à l'environnement R local et RStudio
+.RData
+.Rhistory
+.Rprofile
+.Rproj.user/
+.Ruserdata
+
+# Fichiers système (macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Bibliothèque renv 
+
+renv/library/
+renv/staging/ 
+# Dossier temporaire parfois créé par renv
+
+renv/python/
+/rsconnect/
+
+
+
+# Fichiers de données volumineux 
+www/tax_ref
+
+
+# Fichiers de cache 
+# Le fichier .rds est petit, le versionner peut faciliter l'utilisation
+# www/data/observations_openobs_par_departement.rds
+
+# Dossiers de déploiement 
+.rsconnect/
+
+# Fichiers secrets ou de configuration locale 
+config.yml
+.secrets/
+.env
